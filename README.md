@@ -13,10 +13,18 @@ Each thread terminates after performing 10 writes.
 After all threads have finished, the app will wait for a character press, then exit the application.
 
 **Docker Configuration**
-1. Container volume mapping Customization
+
+1. Container volume mapping Customization: 
 The following syntax included in the Project File to create a volume "C:\junk" and mounts it in the container in the folder /log.
 ```
 <PropertyGroup>
    	<DockerfileRunArguments>-v c:\junk:/log</DockerfileRunArguments>
 </PropertyGroup>
 ```
+**Safe File Access**
+Created a FileHandler Singleton class to facilitate the file access and operations in a restricted way.
+A local Mutex object is used to synchronize the access to the. The calling thread will be blocked until it acquires ownership of the mutex, the ReleaseMutex is used to release ownership of the mutex. A dispose method is included within the FileHandler class to dispose the mutex object.
+
+
+
+
