@@ -26,6 +26,16 @@ The following syntax included in the Project File to create a volume "C:\junk" a
 Created a _FileHandler_ Singleton class to facilitate the file access and operations in a restricted way.
 A local Mutex object is used to synchronize the access to the. The calling thread will be blocked until it acquires ownership of the mutex, the ReleaseMutex is used to release ownership of the mutex. A dispose method is included within the FileHandler class to dispose the mutex object.
 
+**Thread Creation**
+
+There are two implementations provided for thread creation.
+The class _ThreadHandlerWithExplicitThread_ will create 10 threads explicitly using the _Task.Factory.StartNew_ method with the LongRunning Task Creation Options. 
+
+The class _ThreadHandlerWithImplicitThread_ will create the threads implicitly using the _Task.Run_ method, and the task will be added to the thread pool. This is a more recommended method to follow. 
+
+The aggregated tasks from the class can run asynchronously with synchronous access to the file and append the content within it.
+
+
 
 
 
