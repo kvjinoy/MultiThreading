@@ -22,7 +22,8 @@ The following syntax included in the Project File to create a volume "C:\junk" a
 </PropertyGroup>
 ```
 **Safe File Access**
-Created a FileHandler Singleton class to facilitate the file access and operations in a restricted way.
+
+Created a _FileHandler_ Singleton class to facilitate the file access and operations in a restricted way.
 A local Mutex object is used to synchronize the access to the. The calling thread will be blocked until it acquires ownership of the mutex, the ReleaseMutex is used to release ownership of the mutex. A dispose method is included within the FileHandler class to dispose the mutex object.
 
 
