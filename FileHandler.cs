@@ -50,10 +50,20 @@ namespace MultiThreading
         public void AppendContent(int threadId)
         {
             mutex.WaitOne();
-            lineNumber++;
-            var content = $"{lineNumber}, {threadId}, {DateTime.Now.ToString(TimeFormat)}";
-            AppendContent(new[] { $"{content}" });
-            mutex.ReleaseMutex();
+
+            try
+            {
+
+                lineNumber++;
+                var content = $"{lineNumber}, {threadId}, {DateTime.Now.ToString(TimeFormat)}";
+                AppendContent(new[] { $"{content}" });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally { mutex.ReleaseMutex(); }
+
         }
 
         public string GetContent()
