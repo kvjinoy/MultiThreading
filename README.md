@@ -29,11 +29,12 @@ A local Mutex object is used to synchronize the access to the. The calling threa
 **Thread Creation**
 
 There are two implementations provided for thread creation.
+
 The class _ThreadHandlerWithExplicitThread_ will create 10 threads explicitly using the _Task.Factory.StartNew_ method with the LongRunning Task Creation Options. 
 
 The class _ThreadHandlerWithImplicitThread_ will create the threads implicitly using the _Task.Run_ method, and the task will be added to the thread pool. This is a more recommended method to follow. 
 
-The aggregated tasks from the class can run asynchronously with synchronous access to the file and append the content within it.
+The aggregated tasks from the class can run asynchronously with synchronous access to the file and append the content within it. The newly created file available under the folder will be /log
 
 
 
