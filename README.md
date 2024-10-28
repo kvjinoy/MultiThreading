@@ -11,3 +11,10 @@ Each line is written as <line_count>, <thread_id>, <current_time_stamp>, with th
 Each thread terminates after performing 10 writes.
 
 After all threads have finished, the app will wait for a character press, then exit the application.
+
+**Docker Configuration**
+1. Container volume mapping Customization
+The following syntax included in the Project File to create a volume "C:\junk" and mounts it in the container in the folder /log.
+<PropertyGroup>
+   	<DockerfileRunArguments>-v c:\junk:/log</DockerfileRunArguments>
+</PropertyGroup>
